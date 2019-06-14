@@ -1,7 +1,7 @@
 # csharp-hfdp
 Head First Design Patterns Implementation in C#
 
-Design Principles
+### Design Principles
 1. Identify the aspects of your application that vary and separate them from what stays the same.
     
     Take the parts that vary and encapsulate them, so that later you can alter or extend the
@@ -19,3 +19,12 @@ Design Principles
     * Assign the concrete implementation at runtime.
         > a = getAnimal();
         > animal.makeSound();
+
+3. Favor composition over inheritance.
+	
+	HAS-A can be better than IS-A
+
+### Design Patterns
+1. The Strategy Pattern 
+	> Defines a family of algorithms, encapsulates each one, makes them interchangeable.
+	> Strategy lets the algorithm vary independently from clients that use it.

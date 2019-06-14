@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace csharp_hfdp.Welcome
+namespace csharp_hfdp.Strategy
 {
     public interface IFlyBehavior
     {
@@ -11,7 +11,7 @@ namespace csharp_hfdp.Welcome
 
     public class FlyWithWings : IFlyBehavior
     {
-        public void Fly() => Console.WriteLine("I'm Flying!!");
+        public void Fly() => Console.WriteLine("I'm flying!!");
     }
 
     public class FlyNoWay : IFlyBehavior
