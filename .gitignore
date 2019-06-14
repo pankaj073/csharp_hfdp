@@ -25,3 +25,5 @@ project.fragment.lock.json
 
 # Click-Once directory
 publish/
+
+*.user
