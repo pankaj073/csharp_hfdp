@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp_hfdp", "csharp_hfdp\csharp_hfdp.csproj", "{76549AE1-C846-4E53-917E-FCF596DE1AB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp_hfdp.tests", "csharp_hfdp.tests\csharp_hfdp.tests.csproj", "{AB6ADCC1-9573-4210-9DC3-4420F5CA0ADA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{76549AE1-C846-4E53-917E-FCF596DE1AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76549AE1-C846-4E53-917E-FCF596DE1AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76549AE1-C846-4E53-917E-FCF596DE1AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB6ADCC1-9573-4210-9DC3-4420F5CA0ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB6ADCC1-9573-4210-9DC3-4420F5CA0ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB6ADCC1-9573-4210-9DC3-4420F5CA0ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB6ADCC1-9573-4210-9DC3-4420F5CA0ADA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

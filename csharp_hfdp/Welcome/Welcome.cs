@@ -19,6 +19,11 @@ namespace csharp_hfdp.Welcome
         public void Fly() => Console.WriteLine("I can't fly");
     }
 
+    public class FlyRocketPowerred : IFlyBehavior
+    {
+        public void Fly() => Console.WriteLine("I'm flying with a rocket!");
+    }
+
     public interface IQuackBehavior
     {
         void Quack();
@@ -63,6 +68,16 @@ namespace csharp_hfdp.Welcome
         public void Swim() {
             Console.WriteLine("All ducks float, even decoys!");
         }
+
+        public void SetFlyBehavior(IFlyBehavior fb)
+        {
+            flyBehavior = fb;
+        }
+
+        public void SetQuackBehavior(IQuackBehavior qb)
+        {
+            quackBehavior = qb;
+        }
     }
 
 
@@ -74,5 +89,16 @@ namespace csharp_hfdp.Welcome
             quackBehavior = new LoudQuack();
         }
         public override void Display() => Console.WriteLine("I'm a real Mallard duck");
+    }
+
+    public class ModelDuck : Duck
+    {
+        public ModelDuck()
+        {
+            flyBehavior = new FlyNoWay();
+            quackBehavior = new LoudQuack();
+        }
+
+        public override void Display() => Console.WriteLine("I'm a model duck");
     }
 }
