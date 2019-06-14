@@ -1,4 +1,4 @@
-# csharp-hfdp
+# C# Head First Design Patterns
 Head First Design Patterns Implementation in C#
 
 ### Design Principles
