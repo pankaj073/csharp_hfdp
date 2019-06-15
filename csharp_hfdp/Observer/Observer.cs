@@ -78,19 +78,6 @@ namespace csharp_hfdp.Observer
                     _observers.Remove(_observer);
             }
         }
-
-        public float GetTemperature()
-        {
-            return weatherStats.Temperature;
-        }
-        public float GetHumidity()
-        {
-            return weatherStats.Humidity;
-        }
-        public float GetPressure()
-        {
-            return weatherStats.Pressure;
-        }
     }
 
     public class CurrentConditionsDisplay : IObserver<WeatherStats>, IDisplayElement
