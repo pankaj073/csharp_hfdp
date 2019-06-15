@@ -14,7 +14,7 @@ namespace csharp_hfdp.tests
         public void Mallard_Duck_Is_Right()
         {
             var expected = $"Quack{nL}I'm flying!!{nL}";
-            var duck = new csharp_hfdp.Strategy.MallardDuck();
+            var duck = new Strategy.MallardDuck();
 
             using (StringWriter sw = new StringWriter())
             {
@@ -32,14 +32,35 @@ namespace csharp_hfdp.tests
         {
             var expected = $"I can't fly{nL}I'm flying with a rocket!{nL}";
 
-            var model = new csharp_hfdp.Strategy.ModelDuck();
+            var model = new Strategy.ModelDuck();
 
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
                 model.PerformFly();
-                model.SetFlyBehavior(new csharp_hfdp.Strategy.FlyRocketPowerred());
+                model.SetFlyBehavior(new Strategy.FlyRocketPowerred());
                 model.PerformFly();
+
+                var actual = sw.ToString();
+                Assert.AreEqual<string>(expected, actual);
+            }
+        }
+
+        [TestMethod]
+        public void Observer_Is_Working_Fine()
+        {
+            var expected = $"Current conditions: 80F degrees and 65% humidity{nL}"
+                + $"Current conditions: 82F degrees and 70% humidity{nL}"
+                + $"Current conditions: 78F degrees and 90% humidity{nL}";
+
+            var weatherData = new Observer.WeatherData();
+            var currentDisplay = new Observer.CurrentConditionsDisplay(weatherData);
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                weatherData.SetMeasurements(80, 65, 30.4f);
+                weatherData.SetMeasurements(82, 70, 29.2f);
+                weatherData.SetMeasurements(78, 90, 29.2f);
 
                 var actual = sw.ToString();
                 Assert.AreEqual<string>(expected, actual);

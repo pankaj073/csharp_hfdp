@@ -24,7 +24,34 @@ Head First Design Patterns Implementation in C#
 	
 	HAS-A can be better than IS-A
 
+4. Strive for loosely coupled designs between objects and interact.
+	
+	Loosely coupled designs allow us to build flexible OO systems that can handle changes
+	Because they minimize the interdependency between objects
+
+
+### Benefits of Patterns
+* Shared pattern vocabularies are POWERFUL.
+* Patterns allow you to say more with less.
+* Talking at the pattern level allows you to stay "in the design" longer.
+* Shared vocabularies can turbo charge your development team.
+* Shared vacabularies encourage more junior developers to get up to speed.
+
+
 ### Design Patterns
 1. The Strategy Pattern 
 	> Defines a family of algorithms, encapsulates each one, makes them interchangeable.
 	> Strategy lets the algorithm vary independently from clients that use it.
+
+2. The Observer Pattern
+	> Defines a one-to-many dependency between objects so that when one object changes state,
+	> all of it's dependents are notified and updated automatically.
+
+
+#### The power of Loose Coupling in Observer Pattern
+	* The only thing that the subject knows about an observer is that it implements a
+	Certain Interface
+	* We can add new observers at any time.
+	* We never need to modify the subject to add new types of observers.
+	* We can reuse subjects or observers independently of each other.
+	* Changes to either the subject or an observer will not affect the other.
