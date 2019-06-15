@@ -29,6 +29,9 @@ Head First Design Patterns Implementation in C#
 	Loosely coupled designs allow us to build flexible OO systems that can handle changes
 	Because they minimize the interdependency between objects
 
+5. Classes should be open for extension, but closed for modification.
+
+
 
 ### Benefits of Patterns
 * Shared pattern vocabularies are POWERFUL.
@@ -46,6 +49,10 @@ Head First Design Patterns Implementation in C#
 2. The Observer Pattern
 	> Defines a one-to-many dependency between objects so that when one object changes state,
 	> all of it's dependents are notified and updated automatically.
+
+3. The Decorator Pattern
+	> Attaches additional responsibilities to an object dynamically. Decorators provide a
+	> flexible alternative to subclassing for extending functionality.
 
 
 #### The power of Loose Coupling in Observer Pattern

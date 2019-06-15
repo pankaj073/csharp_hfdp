@@ -11,7 +11,7 @@ namespace csharp_hfdp.tests
         readonly string nL = Environment.NewLine;
 
         [TestMethod]
-        public void Mallard_Duck_Is_Right()
+        public void Strategy_Mallard_Duck_Is_Right()
         {
             var expected = $"Quack{nL}I'm flying!!{nL}";
             var duck = new Strategy.MallardDuck();
@@ -28,7 +28,7 @@ namespace csharp_hfdp.tests
         }
 
         [TestMethod]
-        public void Model_Duck_Can_Change_Behavior_At_Runtime()
+        public void Strategy_Duck_Can_Change_Behavior_At_Runtime()
         {
             var expected = $"I can't fly{nL}I'm flying with a rocket!{nL}";
 
@@ -65,6 +65,39 @@ namespace csharp_hfdp.tests
                 var actual = sw.ToString();
                 Assert.AreEqual<string>(expected, actual);
             }
+        }
+
+        [TestMethod]
+        public void Decorator_Espress_Description()
+        {
+            var espresso = new Decorator.Espresso();
+            var expected = 1.99;
+            var actual = espresso.Cost();
+            Assert.AreEqual<double>(expected, actual);
+        }
+
+        [TestMethod]
+        public void Decorator_Espress_Cost()
+        {
+            var espresso = new Decorator.Espresso();
+            var expected = "Espresso";
+            var actual = espresso.GetDescription();
+            Assert.AreEqual<string>(expected, actual);
+        }
+
+        [TestMethod]
+        public void Decorator_HouseBlendDoubleMochaSoyWhip_Cost()
+        {
+            var expected = 1.71;
+
+            Decorator.Beverage beverage = new Decorator.HouseBlend();
+            beverage = new Decorator.Mocha(beverage);
+            beverage = new Decorator.Mocha(beverage);
+            beverage = new Decorator.Soy(beverage);
+            beverage = new Decorator.Whip(beverage);
+            var actual = beverage.Cost();
+
+            Assert.AreEqual<double>(expected, actual);
         }
     }
 }
