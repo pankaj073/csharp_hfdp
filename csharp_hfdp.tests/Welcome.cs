@@ -99,5 +99,29 @@ namespace csharp_hfdp.tests
 
             Assert.AreEqual<double>(expected, actual);
         }
+
+        [TestMethod]
+        public void Factory_NYStyleCheesePizza_Done_Right()
+        {
+            var expected = "Preparing NY Style Sauce and Cheese Pizza" + nL
+                + "Tossing dough..." + nL
+                + "Adding sauce..." + nL
+                + "Adding toppings..." + nL
+                + "   Grated Reggiano Cheese" + nL
+                + "Bake for 25 minutes at 350" + nL
+                + "Cutting the pizza into diagonal slices" + nL
+                + "Place pizza in official PizzaStore box" + nL;
+
+            Factory.PizzaStore store = new Factory.NYStylePizzaStore();
+
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                store.OrderPizza("cheese");
+                var actual = sw.ToString();
+
+                Assert.AreEqual<string>(expected, actual);
+            }
+        }
     }
 }

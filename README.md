@@ -54,6 +54,9 @@ Head First Design Patterns Implementation in C#
 	> Attaches additional responsibilities to an object dynamically. Decorators provide a
 	> flexible alternative to subclassing for extending functionality.
 
+4. The Factory Pattern
+	> 
+
 
 #### The power of Loose Coupling in Observer Pattern
 	* The only thing that the subject knows about an observer is that it implements a
