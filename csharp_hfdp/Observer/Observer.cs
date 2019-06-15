@@ -5,89 +5,125 @@ using System.Text;
 namespace csharp_hfdp.Observer
 {
     #region interfaces
-    public interface ISubject
-    {
-        void RegisterObserver(IObserver o);
-        void RemoveObserver(IObserver o);
-        void NotifyObservers();
-    }
-
-    public interface IObserver
-    {
-        void Update(float temp, float humidity, float pressure);
-    }
-
     public interface IDisplayElement
     {
         void Display();
     }
     #endregion
 
+
     #region classes
-    public class WeatherData : ISubject
+    public class WeatherStats
     {
-        List<IObserver> observers;
-        float temperature;
-        float humidity;
-        float pressure;
+        public float Temperature { get; set; }
+        public float Humidity { get; set; }
+        public float Pressure { get; set; }
+    }
+
+    public class WeatherData : IObservable<WeatherStats>
+    {
+        List<IObserver<WeatherStats>> observers;
+        WeatherStats weatherStats;
 
         public WeatherData()
         {
-            observers = new List<IObserver>();
+            weatherStats = new WeatherStats();
+            observers = new List<IObserver<WeatherStats>>();
         }
         public void NotifyObservers()
         {
             foreach(var observer in observers)
             {
-                observer.Update(temperature, humidity, pressure);
+                observer.OnNext(weatherStats);
             }
         }
-
-        public void RegisterObserver(IObserver o)
-        {
-            observers.Add(o);
-        }
-
-        public void RemoveObserver(IObserver o)
-        {
-            int i = observers.IndexOf(o);
-            observers.RemoveAt(i);
-        }
-
+       
         public void MeasurementsChanged()
         {
             NotifyObservers();
         }
         public void SetMeasurements(float temperature, float humidity, float pressure)
         {
-            this.temperature = temperature;
-            this.humidity = humidity;
-            this.pressure = pressure;
+            weatherStats.Temperature = temperature;
+            weatherStats.Humidity = humidity;
+            weatherStats.Pressure = pressure;
             MeasurementsChanged();
+        }
+
+        public IDisposable Subscribe(IObserver<WeatherStats> observer)
+        {
+            if (!observers.Contains(observer))
+                observers.Add(observer);
+
+            return new Unsubscriber(observers, observer);
+        }
+
+        private class Unsubscriber : IDisposable
+        {
+            private List<IObserver<WeatherStats>> _observers;
+            private IObserver<WeatherStats> _observer;
+
+            public Unsubscriber(
+                List<IObserver<WeatherStats>> observers, 
+                IObserver<WeatherStats> observer
+                )
+            {
+                this._observers = observers;
+                this._observer = observer;
+            }
+
+            public void Dispose()
+            {
+                if (_observers != null && _observers.Contains(_observer))
+                    _observers.Remove(_observer);
+            }
+        }
+
+        public float GetTemperature()
+        {
+            return weatherStats.Temperature;
+        }
+        public float GetHumidity()
+        {
+            return weatherStats.Humidity;
+        }
+        public float GetPressure()
+        {
+            return weatherStats.Pressure;
         }
     }
 
-    public class CurrentConditionsDisplay : IObserver, IDisplayElement
+    public class CurrentConditionsDisplay : IObserver<WeatherStats>, IDisplayElement
     {
         float temperature;
         float humidity;
 
-        ISubject weatherData;
+        IObservable<WeatherStats> weatherData;
 
-        public CurrentConditionsDisplay(ISubject weatherData)
+        public CurrentConditionsDisplay(IObservable<WeatherStats> weatherData)
         {
             this.weatherData = weatherData;
-            weatherData.RegisterObserver(this);
+            weatherData.Subscribe(this);
         }
         public void Display()
         {
             Console.WriteLine($"Current conditions: {temperature}F degrees and {humidity}% humidity");
         }
 
-        public void Update(float temp, float humidity, float pressure)
+        public void OnCompleted()
         {
-            this.temperature = temp;
-            this.humidity = humidity;
+            throw new NotImplementedException();
+        }
+
+        public void OnError(Exception error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnNext(WeatherStats value)
+        {
+            temperature = value.Temperature;
+            humidity = value.Humidity;
             Display();
         }
     }
