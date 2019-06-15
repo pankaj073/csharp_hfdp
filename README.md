@@ -49,13 +49,20 @@ Head First Design Patterns Implementation in C#
 2. The Observer Pattern
 	> Defines a one-to-many dependency between objects so that when one object changes state,
 	> all of it's dependents are notified and updated automatically.
+	> IObservable and IObserver
 
 3. The Decorator Pattern
 	> Attaches additional responsibilities to an object dynamically. Decorators provide a
 	> flexible alternative to subclassing for extending functionality.
+	
 
 4. The Factory Pattern
-	> 
+	> Defines an interface for creating an object, but lets subclasses decide which class to
+	> instanciate. Factory method lets a class defer instanciation to subclasses.
+	> Creator classes
+	>	> PizzaStore, NYStylePizzaStore, ChicagoStylePizzaStore
+	> Product Classes
+	>	> Pizza, NYStyleCheesePizza, ChicagoStyleCheesePizza, NYStylePepperoniPizza, ChicagoStylePepperoniPizza
 
 
 #### The power of Loose Coupling in Observer Pattern
