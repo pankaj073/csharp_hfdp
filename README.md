@@ -59,8 +59,10 @@ Head First Design Patterns Implementation in C#
 4. The Factory Pattern
 	> Defines an interface for creating an object, but lets subclasses decide which class to
 	> instanciate. Factory method lets a class defer instanciation to subclasses.
+	
 	> Creator classes
 	>	> PizzaStore, NYStylePizzaStore, ChicagoStylePizzaStore
+	
 	> Product Classes
 	>	> Pizza, NYStyleCheesePizza, ChicagoStyleCheesePizza, NYStylePepperoniPizza, ChicagoStylePepperoniPizza
 
