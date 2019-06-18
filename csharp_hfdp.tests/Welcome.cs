@@ -68,7 +68,7 @@ namespace csharp_hfdp.tests
         }
 
         [TestMethod]
-        public void Decorator_Espress_Description()
+        public void Decorator_Espresso_Description()
         {
             var espresso = new Decorator.Espresso();
             var expected = 1.99;
@@ -77,7 +77,7 @@ namespace csharp_hfdp.tests
         }
 
         [TestMethod]
-        public void Decorator_Espress_Cost()
+        public void Decorator_Espresso_Cost()
         {
             var espresso = new Decorator.Espresso();
             var expected = "Espresso";
@@ -123,5 +123,16 @@ namespace csharp_hfdp.tests
                 Assert.AreEqual<string>(expected, actual);
             }
         }
+
+        /***
+         * Will implement later
+         * 
+        [TestMethod]
+        public void AbstractFactory_Done_Right()
+        {
+            throw new NotImplementedException();
+        }
+         *
+         ***/
     }
 }

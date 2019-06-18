@@ -31,7 +31,12 @@ Head First Design Patterns Implementation in C#
 
 5. Classes should be open for extension, but closed for modification.
 
-
+6. Dependency Inversion Principle 
+	
+	Depend upon abstractions. Do not depend upon concrete classes.
+	* No variable should hold a reference to a concrete class.
+	* No class should derive from a concrete class.
+	* No Method should override an implemented method of any of its base class.
 
 ### Benefits of Patterns
 * Shared pattern vocabularies are POWERFUL.
@@ -56,7 +61,7 @@ Head First Design Patterns Implementation in C#
 	> flexible alternative to subclassing for extending functionality.
 	
 
-4. The Factory Pattern
+4. The Factory Method Pattern
 	> Defines an interface for creating an object, but lets subclasses decide which class to
 	> instanciate. Factory method lets a class defer instanciation to subclasses.
 	
@@ -66,6 +71,24 @@ Head First Design Patterns Implementation in C#
 	> Product Classes
 	>	> Pizza, NYStyleCheesePizza, ChicagoStyleCheesePizza, NYStylePepperoniPizza, ChicagoStylePepperoniPizza
 
+5. Abstract Factory Pattern
+	> Provides an interface for creating families of related and dependent objects
+	> without specifying their concrete classes.
+
+	> Abstract Factory (interface)
+	>	> Defines the interface that all concrete factories must implement which consists
+	>	> of a set of methods for producing products.
+
+	> Concrete Factory 
+	>	> Implement the different product families, To create a product, the client uses
+	>	> one of these factories so it never has to instantiate a product object.
+
+	> Client
+	>	> The client is written against the abstract factory and then computed at runtime 
+	>	> with an actual factory.
+
+	> Abstract Product (interface)
+	>	> This the product family, Each concrete factory can produce an entire set of products.
 
 #### The power of Loose Coupling in Observer Pattern
 	* The only thing that the subject knows about an observer is that it implements a
@@ -74,3 +97,8 @@ Head First Design Patterns Implementation in C#
 	* We never need to modify the subject to add new types of observers.
 	* We can reuse subjects or observers independently of each other.
 	* Changes to either the subject or an observer will not affect the other.
+
+#### Learnings
+	* Static & Dynamic Polymorphism
+	* You can create class with intellisence within the same file.
+	* Unlike java you don't need access modifiers while defining a interface in c#
